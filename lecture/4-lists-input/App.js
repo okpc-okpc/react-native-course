@@ -19,7 +19,7 @@ export default class App extends React.Component {
         <Button title="toggle contacts" onPress={this.toggleContacts} />
         <ScrollView>
           {contacts.map(contact => (
-            <Text>{contact.name}</Text>
+            <Text key={contact.key}>{contact.name}</Text>
           ))}
         </ScrollView>
       </View>
