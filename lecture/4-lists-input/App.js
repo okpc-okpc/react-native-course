@@ -5,7 +5,7 @@ import {Constants} from 'expo'
 import contacts from './contacts'
 
 const Row = props => (
-  <View key={props.key}>
+  <View>
     <Text>{props.name}</Text>
     <Text>{props.phone}</Text>
   </View>
@@ -25,7 +25,7 @@ export default class App extends React.Component {
       <View style={styles.container}>
         <Button title="toggle contacts" onPress={this.toggleContacts} />
         <ScrollView>
-          {contacts.map(contact => <Row {...contact} />)}
+          {contacts.map(contact => <Row key={contact.key} {...contact} />)}
         </ScrollView>
       </View>
     );
