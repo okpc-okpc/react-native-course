@@ -18,11 +18,11 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <Button title="toggle contacts" onPress={this.toggleContacts} />
-        { this.state.showContacts ? (
+        { this.state.showContacts && (
             <ScrollView>
               {contacts.map(contact => <Row key={contact.key} {...contact} />)}
             </ScrollView>
-          ) : null
+          )
         }
       </View>
     )
