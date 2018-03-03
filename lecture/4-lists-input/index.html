@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+		<title>Upload</title>
+		<style type="text/css">
+			html, body {
+				width: 100%;
+				height: 100%;
+			}
+			.input, .preview, img {
+				max-width: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="input">
+			<h1>Input</h1>
+			<input required id="POST-picture" type="file" name="file" accept="image/*, capture=camera" />
+			<div class="preview">
+				<img class="preview-img" src="" alt="">
+			</div>
+		</div>
+
+		<script>
+			function showPreview(input) {
+				if (input.files && input.files[0]) {
+					var reader = new FileReader();
+					reader.onload = function(e) {
+						preview.innerHTML = '<img class="preview-img" src="' + e.target.result + '"/>';
+					};
+					reader.readAsDataURL(input.files[0]);
+				}
+			}
+
+			var input = document.querySelector("#POST-picture")
+			var preview = document.querySelectorAll(".preview")[0]
+			input.addEventListener('change', function(){showPreview(this)}, false);
+		</script>
+	</body>
+</html>
