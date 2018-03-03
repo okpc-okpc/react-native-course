@@ -17,11 +17,11 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <Button title="toggle contacts" onPress={this.toggleContacts} />
-        <View>
+        <ScrollView>
           {contacts.map(contact => (
             <Text>{contact.name}</Text>
           ))}
-        </View>
+        </ScrollView>
       </View>
     );
   }
