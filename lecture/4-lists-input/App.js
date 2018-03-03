@@ -4,6 +4,7 @@ import {Constants} from 'expo'
 
 import contacts, { compareNames } from './contacts'
 import Row from './Row'
+import ContactsList from './ContactsList'
 
 export default class App extends React.Component {
   state = {
@@ -30,16 +31,7 @@ export default class App extends React.Component {
       <View style={styles.container}>
         <Button title="toggle contacts" onPress={this.toggleContacts} />
         <Button title="sort" onPress={this.sort} />
-        { this.state.showContacts && (
-            <SectionList
-              renderItem={this.renderItem}
-              renderSectionHeader={this.renderSectionHeader}
-              sections={[{
-                title: 'A',
-                data: this.state.contacts,
-              }]}
-            />
-          )
+        { this.state.showContacts && <ContactsList renderItem={this.renderItem} renderSectionHeader={this.renderSectionHeader} contacts={this.state.contacts} />
         }
       </View>
     )
