@@ -21,7 +21,7 @@ export default class App extends React.Component {
     }))
   }
 
-  renderItem = obj => <Row {...(obj.item)} />
+  renderItem = ({item}) => <Row {...item} />
   
 
   render() {
