@@ -3,7 +3,6 @@ import { Button, SectionList, StyleSheet, Text, View } from 'react-native';
 import {Constants} from 'expo'
 
 import contacts, { compareNames } from './contacts'
-import Row from './Row'
 import ContactsList from './ContactsList'
 
 export default class App extends React.Component {
@@ -22,17 +21,12 @@ export default class App extends React.Component {
     }))
   }
 
-  renderItem = ({item}) => <Row {...item} />
-  
-  renderSectionHeader = obj => <Text>{obj.section.title}</Text>
-
   render() {
     return (
       <View style={styles.container}>
         <Button title="toggle contacts" onPress={this.toggleContacts} />
         <Button title="sort" onPress={this.sort} />
-        { this.state.showContacts && <ContactsList renderItem={this.renderItem} renderSectionHeader={this.renderSectionHeader} contacts={this.state.contacts} />
-        }
+        { this.state.showContacts && <ContactsList contacts={this.state.contacts} /> }
       </View>
     )
   }
