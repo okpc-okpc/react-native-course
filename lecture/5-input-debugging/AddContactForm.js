@@ -32,16 +32,10 @@ export default class AddContactForm extends React.Component {
     if (this.state.name !== prevState.name || this.state.phone !== prevState.phone) {
       this.validateForm()
     }
-  } 
-
-  handleNameChange = name => {
-    this.setState({name})
   }
 
-  handlePhoneChange = phone => {
-    if (+phone >= 0 && phone.length <=10) {
-      this.setState({phone})
-    }
+  getHandler = key => val => {
+    this.setState({[key]: val})
   }
 
   validateForm = () => {
@@ -63,14 +57,14 @@ export default class AddContactForm extends React.Component {
         <TextInput
           style={styles.input}
           value={this.state.name}
-          onChangeText={this.handleNameChange}
+          onChangeText={this.getHandler("name")}
           placeholder="Name"
         />
         <TextInput
           keyboardType="numeric"
           style={styles.input}
           value={this.state.phone}
-          onChangeText={this.handlePhoneChange}
+          onChangeText={this.getHandler("phone")}
           placeholder="Phone"
         />
         <Button title="Submit" onPress={this.handleSubmit} disabled={!this.state.isFormValid} />
